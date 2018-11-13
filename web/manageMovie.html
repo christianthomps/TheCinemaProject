@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Manager Movie</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style.css" rel="stylesheet" type="text/css" media="all">
+        <link href="manageMovieStyle.css" rel="stylesheet" type="text/css" media="all">
+
+    </head>
+    <body>
+        <map name="header-links">
+            <area target="" alt="browse" title="browse" href="Browse.html" coords="227,204,347,237" shape="rect">
+            <area target="" alt="account" title="account" href="signin.jsp" coords="353,203,473,237" shape="rect">
+            <area target="" alt="home" title="home" href="index.jsp" coords="154,79,532,168" shape="rect">
+        </map>
+
+        <div id="wrapper">
+            <div class="header">
+                <div id="header-img"><img usemap="#header-links" src="Images/retroheader3.png"/></div>
+            </div>
+
+            <h1>Manage Movie</h1>
+
+            <form action="/action_page.php">
+                Search Movie:
+            <input type="text" id="inUser">
+            </form>
+            <br>
+
+            <table>
+                <tr>
+                    <th>Title</th>
+                    <th>Rating</th>
+                    <th>Category</th>
+                    <th>Director</th>
+                    <th>Producer</th>
+                    <th>Restriction</th>
+                </tr>
+                <tr>
+                    <td>A Quiet Place</td>
+                    <td>7.7</td>
+                    <td>Drama/Thriller</td>
+                    <td>John Krasinski</td>
+                    <td>Paramount Pictures</td>
+                    <td>PG-13</td>
+                </tr>
+                <tr>
+                    <td>Incredibles 2</td>
+                    <td>8.0</td>
+                    <td>Sci-Fi/Action</td>
+                    <td>Brad Bird</td>
+                    <td>Disney/Pixar</td>
+                    <td>PG</td>
+                </tr>
+            </table>
+            <br>
+
+            <form action="/action_page.php">
+                <input type="button" value="Select Movie" onclick="">
+                <input type="reset" value="Cancel">
+            </form>
+        </div>
+    </body>
+</html>

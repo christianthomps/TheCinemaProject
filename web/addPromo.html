@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Add Promo</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style.css" rel="stylesheet" type="text/css" media="all">
+    </head>
+    <body>
+    <div id="wrapper">
+        <div class="header">
+            <div id="header-img"><img usemap="#header-links" src="Images/retroheader3.png"/></div>
+        </div>
+        <h1>Add New Promotion</h1>
+
+            <form action="/action_page.php">
+                Start date:
+                <input type="date" id="startDate">
+                Start time:
+                <input type="time" id="startTime">
+                <br>
+                End date:
+                <input type="date" id="endDate">
+                End time:
+                <input type="time" id="endTime">
+                <br>
+                <br>
+                Promotion title:
+                <input type="text" id="promotionTitle">
+                <br>
+                Promotion code:
+                <input type="text" id="promotionCode">
+                <br>
+                <textarea id="eventDetails" rows="10" cols="50">Promotion details</textarea>
+                <br>
+                <input type="button" value="Save Promotion" onclick="">
+                <input type="reset" value="Cancel">
+            </form>
+    </div>
+    </body>
+</html>

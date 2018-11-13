@@ -1,0 +1,90 @@
+@font-face{
+    font-family: 'Play-Regular';
+    src: url('stylesheets/play/Play-Regular.ttf') format("truetype");
+
+}
+body{
+    background: url("Images/outrunbackground.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 0;
+    color: white;
+    height: 100%;
+    font-family: Play-Regular;
+}
+table, th, td {
+    border: 1px solid black;
+}
+
+.bg {
+    /* The image used */
+    background-image: url("Images/outrunbackground.jpg");
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+#wrapper {
+    margin: auto;
+    width: 50%;
+    min-width: 550px;
+    height:1000px
+
+}
+.header {
+    margin: auto;
+    width: 700px;
+    height: 300px;
+
+}
+#header-img{
+    padding-right: 1em;
+    padding-left: 1em;
+}
+
+.content {
+    margin: auto;
+    width: 70%;
+    min-width: 550px;
+    height:1000px;
+
+}
+
+.contentBox{
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgba(0,0,0,0.5);
+    border: 5px solid white;
+    box-shadow: 0 0 20px black;
+}
+
+.content-text{
+    text-align: center;
+    color: white;
+}
+
+#browsepic {
+    margin: auto;
+    padding: 10px;
+    pading-left: 4em;
+}
+
+.selectButton{
+
+}
+
+#footer {
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    clear: both;
+    width: 940px;
+}

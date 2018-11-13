@@ -1,0 +1,29 @@
+#movieContent{
+    height: 300px;
+    width: auto;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-style: solid;
+    border-width: 1px;
+    border-color: green;
+}
+
+#moviePoster{
+    margin-left: 1em;
+    height: 209px;
+    width: 140px;
+    float: left;
+    border-style: solid;
+    border-width: 1px;
+    border-color: yellow;
+}
+
+#purchaseSection{
+    margin-left: 1em;
+    position: absolute;
+    bottom: 0;
+}
+#selectSeatsButton{
+    float:right;
+}
+

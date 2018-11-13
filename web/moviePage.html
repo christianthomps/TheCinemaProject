@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" href="style.css" href="//fonts.googleapis.com/css?family=Play">
+<head>
+    <link href="style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="moviePageStyle.css" rel="stylesheet" type="text/css" media="all">
+    <link href="movieStyle.css" rel="stylesheet" type="text/css" media="all">
+
+    <meta charset="UTF-8">
+    <title>Cinema</title>
+</head>
+
+<body>
+<!-Link map for header-->
+<map name="header-links">
+    <area target="" alt="browse" title="browse" href="Browse.html" coords="227,204,347,237" shape="rect">
+    <area target="" alt="account" title="account" href="signin.jsp" coords="353,203,473,237" shape="rect">
+    <area target="" alt="home" title="home" href="index.jsp" coords="154,79,532,168" shape="rect">
+</map>
+
+<div id="wrapper">
+    <div class="header">
+        <div id="header-img"><img usemap="#header-links" src="Images/retroheader3.png"/></div>
+    </div>
+
+        <div class="content">
+            <div id="movieContent">
+                <div id="moviePoster">
+
+                </div>
+                <div id="movieDescription">
+                    <div id="movieTitleLink">TITLE</div>
+                </div>
+
+            </div>
+            <div id="purchaseSection">
+            <p>Number of tickets</p>
+            <form>
+                Senior
+                <select id="seniorTicketNo">
+                    <option>1</option>
+                </select>
+                Adult
+                <select id="adultTicketNo">
+                    <option>1</option>
+                </select>
+                Under 18
+                <select id="minorTicketNo">
+                    <option>1</option>
+                </select>
+                <p>
+                    <input type="text"/><button>Add Promo Code</button>
+                </p>
+                <p>
+                    <div id="selectSeatsButton">
+                        <button>Select Seats</button>
+                    </div>
+                </p>
+            </form>
+        </div>
+        </div>
+    </div>
+
+    <div id="footer">
+
+    </div>
+</div>
+</body>
+</html>
