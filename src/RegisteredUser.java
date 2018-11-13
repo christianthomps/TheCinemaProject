@@ -2,7 +2,7 @@
 
 import java.sql.*;
 
-public class RegisteredUser extends WebUser {
+public class RegisteredUser {
 
     private static final String MYHOST = "jbdc:mysql://127.0.01:3306/Project";//not used atm
     private static final String USER = "localhost";//"localhost";//not used atm
@@ -247,7 +247,7 @@ public class RegisteredUser extends WebUser {
         }
     }
 
-    @Override
+    //@Override
     public String toString() {
         return "Current User data:\n"
                 + "UID: \t" + UID + "\n"

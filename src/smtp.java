@@ -49,7 +49,7 @@ public class smtp {
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("[theirEmail]"));            //insert recipient's email here with domain name (i.e. to@gmail.com)
             message.setSubject("[subjectOfEmail]");                                                                //insert subject of here
             message.setText("[emailContent]");                                                                   //insert body of email here
-            Transport.send(message, "[yourEmail]", "[yourPassword]");                                            //insert your email here with domain name, followed by password
+            //Transport.send(message, "[yourEmail]", "[yourPassword]");                                            //insert your email here with domain name, followed by password
 
             //let user know email was successfully sent
             System.out.println("message sent");

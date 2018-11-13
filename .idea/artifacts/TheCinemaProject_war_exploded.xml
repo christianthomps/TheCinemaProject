@@ -7,6 +7,69 @@
         <element id="directory" name="classes">
           <element id="module-output" name="TheCinemaProject" />
         </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/lib/jxl.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/sac.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/jstl.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/mail.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/el-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/ha-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/policy.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/icepush.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/jcommon.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/jsf-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/poi-3.7.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/stax-ex.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/icefaces.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/jaxb-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/jaxb-xjc.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/jaxws-rt.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/jsf-impl.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/mimepull.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/saaj-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/cssparser.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/jaxb-impl.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/jaxws-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/openfaces.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/saaj-impl.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/stax2-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/FastInoset.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/jfreechart.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/jsr181-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/jstl-1.1.0.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/FastInfoset.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/jaxws-tools.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/icefaces-ace.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/portlet2-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/streambuffer.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/javax.servlet.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/gmbal-api-only.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/management-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/primefaces-6.1.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/commons-logging.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/icefaces-compat.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/commons-digester.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/el-api-2.2.1-b03.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/javax.annotation.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/commons-beanutils.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/javax.persistence.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/javax.servlet.jsp.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/woodstox-core-asl.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/javax.annotation_2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/richfaces-core-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/commons-collections.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/richfaces-core-impl.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/commons-collections_2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/primefaces-6.1-sources.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/richfaces-components-ui.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/richfaces-components-api.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/richfaces-core-api-sources.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/richfaces-core-impl-sources.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/krysalis-jCharts-1.0.0-alpha-1.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/richfaces-components-ui-sources.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/richfaces-components-api-sources.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/portletfaces-bridge-2.0.2-ice-7875.jar" />
+        </element>
       </element>
     </root>
   </artifact>
