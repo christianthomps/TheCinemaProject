@@ -1,15 +1,12 @@
-
+package com.mvc.controller;//package ecinema;
 
 import java.sql.*;
+import java.lang.String;
 
 public class RegisteredUser {
 
-    private static final String MYHOST = "jbdc:mysql://127.0.01:3306/Project";//not used atm
-    private static final String USER = "localhost";//"localhost";//not used atm
-    private static final String PASS = "root";//"mysql-0327";//not used atm
-
-    private static final String TEST = "jdbc:mysql://127.0.01:3306/Project?user=root&password=root";//change this to appropriate url/user/pass
-
+    private static final String TEST = "jdbc:mysql://127.0.01:3306/Project?user=root&password=password";//change this to appropriate url/user/pass
+    String registrationStatus = null;
     //Reference from MYSQL
     /* 1 uid: int
      * 2 Email: string
@@ -29,7 +26,7 @@ public class RegisteredUser {
     private String FNAME;
     private String LNAME;
     private String ADDRESS;
-    private int PHONE;
+    private String PHONE;
     private String PAYMENT; //fix this later, should be credit card information, should switch to table I think or class
     private int PROMO;//change this to boolean?
     //private enum STATUS; //fix this later
@@ -40,7 +37,7 @@ public class RegisteredUser {
     static Connection con = null;
     static PreparedStatement pstmt = null;
 
-    // Constructor for RegisteredUser();
+    // Constructor for com.mvc.controller.RegisteredUser();
     // Initializes variables to NULL/0 as placeholder.
     // Probably best used for debugging purpose?
     public RegisteredUser() {
@@ -50,15 +47,15 @@ public class RegisteredUser {
         this.FNAME = null;
         this.LNAME = null;
         this.ADDRESS = null;
-        this.PHONE = 0;
+        this.PHONE = null;
         this.PAYMENT = null;
         this.PROMO = 0;
         //this.STATUS = ??? //I am not sure how to convert enum crap to something usable?
     }
 
-    // Overloaded constructor for RegisteredUser();
+    // Overloaded constructor for com.mvc.controller.RegisteredUser();
     // Initializes variables to values set by user.
-    public RegisteredUser(String email, String pass, String first, String last, String address, int phone, int subscription) {
+    public RegisteredUser(String email, String pass, String first, String last, String address, String phone, int subscription) {
         this.UID = 0;
         this.EMAIL = email;
         this.PASSWORD = pass;
@@ -78,37 +75,37 @@ public class RegisteredUser {
             con = DriverManager.getConnection(TEST);
             String query = "SELECT uid, Password, `First Name`, `Last Name`, Address, Phone, `Promo Sub` FROM RegisteredUser WHERE Email = ? ";
             pstmt = con.prepareStatement(query);
-            pstmt.setString(1, email);
+            pstmt.setString(1,  email);
             rs = pstmt.executeQuery();
 
-            while (rs.next()) {
+            while(rs.next()) {
                 this.UID = rs.getInt("uid");
                 this.EMAIL = email;
                 this.PASSWORD = rs.getString("Password");
                 this.FNAME = rs.getString("First Name");
                 this.LNAME = rs.getString("Last Name");
                 this.ADDRESS = rs.getString("Address");
-                this.PHONE = rs.getInt("Phone");
+                this.PHONE = rs.getString("Phone");
                 this.PROMO = rs.getInt("Promo Sub");
             }
 
             rs.close();
             pstmt.close();
             con.close();
-        } catch (SQLException se) {
+        }catch(SQLException se) {
             se.printStackTrace();
-        } catch (Exception e) {
+        }catch(Exception e) {
             e.printStackTrace();
-        } finally {
+        }finally {
             try {
-                if (pstmt != null)
+                if(pstmt!=null)
                     pstmt.close();
-            } catch (SQLException se2) {
+            }catch(SQLException se2) {
             }
             try {
-                if (con != null)
+                if(con!=null)
                     con.close();
-            } catch (SQLException se) {
+            }catch(SQLException se) {
                 se.printStackTrace();
             }
         }
@@ -121,41 +118,96 @@ public class RegisteredUser {
         return this.PASSWORD.equals(password);
     }
 
+    //secure function, use in future once everything is set up to use MD5() hashing
+    public boolean checkPassword(String email, String password) /*throws SQLException*/ {
+
+        String pw_test = "";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(TEST);
+
+            String query = "SELECT Password FROM RegisteredUser WHERE Email = ? ";
+            pstmt = con.prepareStatement(query);
+            pstmt.setString(1, email);
+            rs = pstmt.executeQuery();
+
+            while(rs.next())
+                pw_test = rs.getString("Password");
+
+            rs.close();
+            pstmt.close();
+            con.close();
+        }catch(SQLException se) {
+            se.printStackTrace();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                if(pstmt!=null)
+                    pstmt.close();
+            }catch(SQLException se2) {
+            }
+            try {
+                if(con!=null)
+                    con.close();
+            }catch(SQLException se) {
+                se.printStackTrace();
+            }
+        }
+        return pw_test.equals(password);
+    }
+
+    boolean login(String email, String password) {
+        if(checkPassword(email, password)) {
+            retrieveUserData(email);
+            return true;
+        }
+        else
+            return false;
+    }
+
+
     //Adds user to database EX: user.addRegUserToDB();
     public void addRegUserToDB() {
+        String registrationStatus = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(TEST);//change later to different URL if needed
             String query = "INSERT into RegisteredUser(Email, Password, `First Name`, `Last Name`, Address, Phone, `Promo Sub`) values(?, ?, ?, ?, ?, ?, ?)";
             pstmt = con.prepareStatement(query);
 
-            pstmt.setString(1, EMAIL);
-            pstmt.setString(2, PASSWORD);
-            pstmt.setString(3, FNAME);
-            pstmt.setString(4, LNAME);
-            pstmt.setString(5, ADDRESS);
-            pstmt.setInt(6, PHONE);
-            pstmt.setInt(7, PROMO);
-            pstmt.executeUpdate();
+            pstmt.setString(1,  this.EMAIL);
+            pstmt.setString(2,  this.PASSWORD);
+            pstmt.setString(3,  this.FNAME);
+            pstmt.setString(4,  this.LNAME);
+            pstmt.setString(5,  this.ADDRESS);
+            pstmt.setString(6,  this.PHONE);
+            pstmt.setInt(7, this.PROMO);
+
+
+            int i= pstmt.executeUpdate();
+
+            //test if executeUpdate == 1
+            if (i!=0) registrationStatus = "SUCCESS";
 
             pstmt.close();
             con.close();
-
+            //Just to ensure data has been inserted into the database
             //System.out.println("ADDED to DB successfully");
-        } catch (SQLException se) {
+        }catch(SQLException se) {
             se.printStackTrace();
-        } catch (Exception e) {
+        }catch(Exception e) {
             e.printStackTrace();
-        } finally {
+        }finally {
             try {
-                if (pstmt != null)
+                if(pstmt!=null)
                     pstmt.close();
-            } catch (SQLException se2) {
+            }catch(SQLException se2) {
             }
             try {
-                if (con != null)
+                if(con!=null)
                     con.close();
-            } catch (SQLException se) {
+            }catch(SQLException se) {
                 se.printStackTrace();
             }
         }
@@ -174,20 +226,20 @@ public class RegisteredUser {
 
             pstmt.close();
             con.close();
-        } catch (SQLException se) {
+        }catch(SQLException se) {
             se.printStackTrace();
-        } catch (Exception e) {
+        }catch(Exception e) {
             e.printStackTrace();
-        } finally {
+        }finally {
             try {
-                if (pstmt != null)
+                if(pstmt!=null)
                     pstmt.close();
-            } catch (SQLException se2) {
+            }catch(SQLException se2) {
             }
             try {
-                if (con != null)
+                if(con!=null)
                     con.close();
-            } catch (SQLException se) {
+            }catch(SQLException se) {
                 se.printStackTrace();
             }
         }
@@ -203,7 +255,7 @@ public class RegisteredUser {
         this.FNAME = null;
         this.LNAME = null;
         this.ADDRESS = null;
-        this.PHONE = 0;
+        this.PHONE = null;
         this.PAYMENT = null;
         this.PROMO = 0;
         //this.STATUS = ??? //I am not sure how to convert enum crap to something usable?
@@ -228,26 +280,26 @@ public class RegisteredUser {
 
             pstmt.close();
             con.close();
-        } catch (SQLException se) {
+        }catch(SQLException se) {
             se.printStackTrace();
-        } catch (Exception e) {
+        }catch(Exception e) {
             e.printStackTrace();
-        } finally {
+        }finally {
             try {
-                if (pstmt != null)
+                if(pstmt!=null)
                     pstmt.close();
-            } catch (SQLException se2) {
+            }catch(SQLException se2) {
             }
             try {
-                if (con != null)
+                if(con!=null)
                     con.close();
-            } catch (SQLException se) {
+            }catch(SQLException se) {
                 se.printStackTrace();
             }
         }
     }
 
-    //@Override
+    @Override
     public String toString() {
         return "Current User data:\n"
                 + "UID: \t" + UID + "\n"
@@ -255,6 +307,66 @@ public class RegisteredUser {
                 + "FULL NAME:\t" + FNAME + " " + LNAME + "\n"
                 + "ADDRESS: \t" + ADDRESS + "\n"
                 + "PHONE #\t" + PHONE + "\n"
-                + "PROMOTION SUBSCRIPTION:\t" + (PROMO == 1 ? "YES\n" : "NO\n");
+                + "PROMOTION SUBSCRIPTION:\t" + (PROMO==0 ? "YES\n":"NO\n");
     }
-}//RegisteredUser
+
+    public String getEMAIL() {
+        return EMAIL;
+    }
+
+    public void setEMAIL(String EMAIL) {
+        this.EMAIL = EMAIL;
+    }
+/*
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+*/
+    public void setFNAME(String FNAME) {
+        this.FNAME = FNAME;
+    }
+
+    public String getFNAME() {
+        return FNAME;
+    }
+
+    public void setLNAME(String LNAME) {
+        this.LNAME = LNAME;
+    }
+
+    public String getLNAME() {
+        return LNAME;
+    }
+
+    public void setPHONE(String PHONE) {
+        this.PHONE = PHONE;
+    }
+
+    public String getPHONE() {
+        return PHONE;
+    }
+
+    public void setADDRESS(String ADDRESS){
+        this.ADDRESS = ADDRESS;
+    }
+
+    public String getADDRESS() {
+        return ADDRESS;
+    }
+
+    public int getPROMO(){
+        return PROMO;
+    }
+
+    public void setPROMO(int PROMO){
+        this.PROMO = PROMO;
+    }
+
+    public String getStatus(){
+        return registrationStatus;
+    }
+}//com.mvc.controller.RegisteredUser

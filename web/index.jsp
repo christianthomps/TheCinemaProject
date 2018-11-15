@@ -29,7 +29,7 @@
             <a href="adminMain.html">adminMain.html</a>
             <a href="addPromo.html">addPromo.html</a>
             <a href="manageMovie.html">manageMovie.html</a>
-            <a href="registration.html">registration.html</a>
+            <a href="registration.jsp">registration.html</a>
             <a href="registrationConfirmation.html">registrationConfirmation.html</a>
             <a href="updateInformation.html">updateInformation.html</a>
 

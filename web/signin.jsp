@@ -21,7 +21,7 @@
     <div class="content">
         <div class="content-text">
             <div class="contentBox">
-                <form name="login "method="post">
+                <form name="login" action="SigninServlet" method="post">
                     <p>Sign up and book movie tickets now!</p>
                     <p>
                         Email: <input type="text" placeholder="Enter Email" name="userEmail" required>
@@ -33,7 +33,7 @@
                         <button type="submit" value="login">Sign In</button>
                     </p>
                     <p>
-                        Don't have an account? <a href="registration.html">Make one now!</a>
+                        Don't have an account? <a href="registration.jsp">Make one now!</a>
                     </p>
                 </form>
             </div>
