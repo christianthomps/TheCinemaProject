@@ -4,11 +4,20 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <servlet>
+        <servlet-name>SigninServlet</servlet-name>
+        <servlet-class>com.mvc.controller.SigninServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SigninServlet</servlet-name>
+        <url-pattern>/SigninServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.mvc.controller.RegisterServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/registration.jsp</url-pattern>
+        <url-pattern>/RegisterServlet</url-pattern>
     </servlet-mapping>
 </web-app>

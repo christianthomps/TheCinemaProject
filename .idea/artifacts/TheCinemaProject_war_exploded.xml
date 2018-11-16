@@ -69,6 +69,8 @@
           <element id="file-copy" path="$PROJECT_DIR$/lib/richfaces-components-ui-sources.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/lib/richfaces-components-api-sources.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/lib/portletfaces-bridge-2.0.2-ice-7875.jar" />
+          <element id="file-copy" path="$USER_HOME$/Desktop/Tools/javax.mail.jar" />
+          <element id="file-copy" path="C:/Program Files (x86)/MySQL/Connector J 8.0/mysql-connector-java-8.0.13.jar" />
         </element>
       </element>
     </root>

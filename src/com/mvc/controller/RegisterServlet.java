@@ -1,5 +1,6 @@
 package com.mvc.controller;
 
+import javax.servlet.RequestDispatcher;
 import java.lang.String;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -35,14 +36,14 @@ public class RegisterServlet extends HttpServlet {
 
         user.addRegUserToDB();
 
-        response.sendRedirect("registrationConfirmation.html  ");
         if (user.getStatus() == "SUCCESS")
         //On success, you can display a message to user on Home page
         {
-            response.sendRedirect("/registrationConfirmation.html");
+            RequestDispatcher req = request.getRequestDispatcher("registrationConfirmation.html");
+            req.include(request, response);
         }
         else{
-            response.sendRedirect("/index.html");
+            response.sendRedirect("/registration.jsp");
         }
 
     }
@@ -52,45 +53,3 @@ public class RegisterServlet extends HttpServlet {
 
     }
 }
-            //if(SUCCESS){
-            //forward to confirmation page
-            //}
-            //else{
-            //error
-            //}
-
-
-
-
-
-
-
-
-
-            //Using Java Beans - An easiest way to play with group of related data
-            /*
-            registerBean.setfirstName(firstName);
-            registerBean.setlastName(lastName);
-            registerBean.setEmail(email);
-            registerBean.setPassword(password);
-            registerBean.setPhonenumber(phonenumber);
-            registerBean.setAddress(address);
-            registerBean.setPromoOpt(promoOpt);
-            RegisterDao registerDao = new RegisterDao();
-            System.out.println("Added variables to bean");
-
-
-            //The core Logic of the Registration application is present here. We are going to insert user data in to the database.
-            //String userRegistered = registerDao.registerUser(registerBean);
-
-            if (userRegistered.equals("SUCCESS"))
-            //On success, you can display a message to user on Home page
-            {
-                request.getRequestDispatcher("/registrationConfirmation.html").forward(request, response);
-            } else
-            //On Failure, display a meaningful message to the User.
-            {
-                request.setAttribute("errMessage", userRegistered);
-                request.getRequestDispatcher("/registration.jsp").forward(request, response);
-            }
-            */

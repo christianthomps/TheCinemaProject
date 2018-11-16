@@ -26,7 +26,7 @@ public class SigninServlet extends HttpServlet {
 
         boolean validate = user.login(email, password);
         if(validate){
-            RequestDispatcher rd=request.getRequestDispatcher("servlet2");
+            RequestDispatcher rd=request.getRequestDispatcher("/index.jsp");
             rd.forward(request,response);
         }
         else{

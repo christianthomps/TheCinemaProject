@@ -5,7 +5,7 @@ import java.lang.String;
 
 public class RegisteredUser {
 
-    private static final String TEST = "jdbc:mysql://127.0.01:3306/Project?user=root&password=password";//change this to appropriate url/user/pass
+    private static final String TEST = "jdbc:mysql://127.0.01:3306/Project?user=admin&password=password";//change this to appropriate url/user/pass
     String registrationStatus = null;
     //Reference from MYSQL
     /* 1 uid: int

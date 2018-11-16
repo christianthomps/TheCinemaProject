@@ -22,30 +22,6 @@ function validate()
     var promoOpt = document.form.promoOpt;
     var address = street + " " + city + " " + state + " " + zipcode;
 
-    if (firstName==null || firstName=="")
-    {
-        return false;
-    }
-    else if (lastName==null || lastName=="")
-    {
-        return false;
-    }
-    else if (birthdate==null || birthdate=="")
-    {
-        return false;
-    }
-    else if (email==null || email=="")
-    {
-        return false;
-    }
-    else if(password.length<6)
-    {
-        return false;
-    }
-    else if (password!=conpassword)
-    {
-        return false;
-    }
 }
 </script>
 
@@ -66,7 +42,7 @@ function validate()
         <div class="contentBox">
             <p>Already have an account? <a href="signin.jsp">Sign in!</a></p>
             <div id="signupwrapper">
-                <form method="post">
+                <form action="RegisterServlet" method="post">
                     <p>First Name
                         <input type="text" name="firstName" required/>
                     </p>
