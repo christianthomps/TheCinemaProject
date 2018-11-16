@@ -18,25 +18,25 @@ public class Driver {
 
         RegisteredUser test = new RegisteredUser();
 
-        test.retrieveUserData("fsusucks@gmail.com");
+        test.retrieveUsersData("fsusucks@gmail.com");
         System.out.println(test.toString());
 
-        test.retrieveUserData("janedoe@gmail.com");
+        test.retrieveUsersData("janedoe@gmail.com");
         System.out.println(test.toString());
 
         //test.deleteRegUserFromDB();
 
-        test.retrieveUserData("johndoe@gmail.com");
+        test.retrieveUsersData("johndoe@gmail.com");
         System.out.println(test.toString());
         //test.deleteRegUserFromDB();
 
-        test.retrieveUserData("fsusucks@gmail.com");
+        test.retrieveUsersData("fsusucks@gmail.com");
         test.deleteRegUserFromDB();
 
         user = new RegisteredUser("IRULE@gmail.com", "pass", "Mister", "Nobody", "HURT ME", "1234567890", 0);
         user.addRegUserToDB();
 
-        test.retrieveUserData("IRULE@gmail.com");
+        test.retrieveUsersData("IRULE@gmail.com");
         System.out.println(test.toString());
 
         test.deleteRegisterdUserTable();

@@ -24,10 +24,10 @@
                 <form name="login" action="SigninServlet" method="post">
                     <p>Sign up and book movie tickets now!</p>
                     <p>
-                        Email: <input type="text" placeholder="Enter Email" name="userEmail" required>
+                        Email: <input type="text" placeholder="Enter Email" name="email" required>
                     </p>
                     <p>
-                        Password: <input type="password" placeholder="Enter Password" name="userPassword" required>
+                        Password: <input type="password" placeholder="Enter Password" name="password" required>
                     </p>
                     <p>
                         <button type="submit" value="login">Sign In</button>

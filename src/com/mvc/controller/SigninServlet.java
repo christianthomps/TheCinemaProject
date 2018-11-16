@@ -22,6 +22,9 @@ public class SigninServlet extends HttpServlet {
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+
+        System.out.println(email + " " + password);
+
         RegisteredUser user = new RegisteredUser();
 
         boolean validate = user.login(email, password);

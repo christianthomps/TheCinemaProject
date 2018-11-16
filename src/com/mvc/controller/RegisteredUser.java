@@ -1,11 +1,11 @@
 package com.mvc.controller;//package ecinema;
-
+import java.io.PrintWriter;
 import java.sql.*;
 import java.lang.String;
 
 public class RegisteredUser {
 
-    private static final String TEST = "jdbc:mysql://127.0.01:3306/Project?user=admin&password=password";//change this to appropriate url/user/pass
+    private static final String TEST = "jdbc:mysql://127.0.01:3306/e-booking?user=root&password=password";//change this to appropriate url/user/pass
     String registrationStatus = null;
     //Reference from MYSQL
     /* 1 uid: int
@@ -69,24 +69,24 @@ public class RegisteredUser {
     }
 
     //Retrieve user's data from database using email
-    public void retrieveUserData(String email) {
+    public void retrieveUsersData(String email) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(TEST);
-            String query = "SELECT uid, Password, `First Name`, `Last Name`, Address, Phone, `Promo Sub` FROM RegisteredUser WHERE Email = ? ";
+            String query = "SELECT userID, password, firstName, lastName, phone, promoSub FROM Users WHERE email = ? ";
             pstmt = con.prepareStatement(query);
             pstmt.setString(1,  email);
             rs = pstmt.executeQuery();
 
             while(rs.next()) {
-                this.UID = rs.getInt("uid");
+                this.UID = rs.getInt("userID");
                 this.EMAIL = email;
-                this.PASSWORD = rs.getString("Password");
-                this.FNAME = rs.getString("First Name");
-                this.LNAME = rs.getString("Last Name");
-                this.ADDRESS = rs.getString("Address");
-                this.PHONE = rs.getString("Phone");
-                this.PROMO = rs.getInt("Promo Sub");
+                this.PASSWORD = rs.getString("password");
+                this.FNAME = rs.getString("firstName");
+                this.LNAME = rs.getString("lastName");
+                //this.ADDRESS = rs.getString("address");
+                this.PHONE = rs.getString("phone");
+                this.PROMO = rs.getInt("promoSub");
             }
 
             rs.close();
@@ -109,7 +109,7 @@ public class RegisteredUser {
                 se.printStackTrace();
             }
         }
-    }//retrieveUserData(String email)
+    }//retrieveUsersData(String email)
 
     //should return false or true if password match
     //this need to be updated to more secure way of testing than loading the data from other functions
@@ -126,13 +126,13 @@ public class RegisteredUser {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(TEST);
 
-            String query = "SELECT Password FROM RegisteredUser WHERE Email = ? ";
+            String query = "SELECT password FROM users WHERE email = ? ";
             pstmt = con.prepareStatement(query);
             pstmt.setString(1, email);
             rs = pstmt.executeQuery();
 
             while(rs.next())
-                pw_test = rs.getString("Password");
+                pw_test = rs.getString("password");
 
             rs.close();
             pstmt.close();
@@ -154,12 +154,13 @@ public class RegisteredUser {
                 se.printStackTrace();
             }
         }
+
         return pw_test.equals(password);
     }
 
     boolean login(String email, String password) {
         if(checkPassword(email, password)) {
-            retrieveUserData(email);
+            retrieveUsersData(email);
             return true;
         }
         else
@@ -173,7 +174,7 @@ public class RegisteredUser {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(TEST);//change later to different URL if needed
-            String query = "INSERT into RegisteredUser(Email, Password, `First Name`, `Last Name`, Address, Phone, `Promo Sub`) values(?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT into users('email', 'password', `firstName`, `lastName`, 'address', 'phonenumber', `promoSub`) values(?, ?, ?, ?, ?, ?, ?)";
             pstmt = con.prepareStatement(query);
 
             pstmt.setString(1,  this.EMAIL);
