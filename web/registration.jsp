@@ -63,6 +63,7 @@ function validate()
                         <input type="text" name="phonenumber" required/>
                     </p>
                     <p>Address:
+                        <script></script>
                         <p>Street
                             <input type="text" name="street" required/>
                         </p>
@@ -78,7 +79,7 @@ function validate()
                     </p>
                     <p>
                         Would you like to receive promotions for discounted movie tickets?
-                        <input type="checkbox" name="promoOpt" value="1">
+                        <input type="checkbox" name="promoSub" value="1">
                     </p>
                     <p style="font-size: 10pt; color: indianred">All fields require input</p>
                     <p>

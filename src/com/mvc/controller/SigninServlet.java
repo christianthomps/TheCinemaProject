@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class SigninServlet extends HttpServlet {
     public SigninServlet() {
@@ -23,12 +24,17 @@ public class SigninServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        System.out.println(email + " " + password);
+        //System.out.println(email + " " + password);
 
         RegisteredUser user = new RegisteredUser();
 
+
         boolean validate = user.login(email, password);
         if(validate){
+            user.retrieveUsersData(email);
+            HttpSession session=request.getSession();
+            session.setAttribute("e-mail",email);
+            session.setAttribute("name", user.getFNAME());
             RequestDispatcher rd=request.getRequestDispatcher("/index.jsp");
             rd.forward(request,response);
         }

@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mvc.bean.RegisterBean;
-import com.mvc.dao.RegisterDao;
 
 public class RegisterServlet extends HttpServlet {
     public RegisterServlet() {
@@ -28,22 +26,33 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String phonenumber = request.getParameter("phonenumber");
-        String address = request.getParameter("address");
-        int promoOpt = Integer.parseInt(request.getParameter("promoOpt"));
-        System.out.println("Set variables.");
+        String address = request.getParameter("street") + "/" + request.getParameter("city")  + ", " + request.getParameter("state") + "/" + request.getParameter("zipcode");
 
-        RegisteredUser user = new RegisteredUser(email, password, firstName, lastName, address, phonenumber, promoOpt);
+        int promoSub = 0;
+        if(request.getParameter("promoOpt") !=  null){
+            promoSub = 1;
+        }
+        int userType = 1;
+        int userStatus = 1;
 
-        user.addRegUserToDB();
+        RegisteredUser user = new RegisteredUser(firstName, lastName, email, password, phonenumber, address, userStatus, promoSub, userType);
 
-        if (user.getStatus() == "SUCCESS")
+        String status = user.addRegUserToDB();
+
+        if (status == "SUCCESS")
         //On success, you can display a message to user on Home page
         {
-            RequestDispatcher req = request.getRequestDispatcher("registrationConfirmation.html");
-            req.include(request, response);
+            //Send email here?
+            request.setAttribute("email", email);
+            RequestDispatcher rd = request.getRequestDispatcher("RegistrationEmailServlet");
+            rd.forward(request,response);
+            //RequestDispatcher req = request.getRequestDispatcher("registrationConfirmation.html");
+            //req.forward(request, response);
         }
         else{
-            response.sendRedirect("/registration.jsp");
+            out.print("There was an error with registration.");
+            RequestDispatcher rd=request.getRequestDispatcher("registration.jsp");
+            rd.include(request,response);
         }
 
     }

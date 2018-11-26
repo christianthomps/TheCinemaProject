@@ -20,4 +20,31 @@
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegistrationEmailServlet</servlet-name>
+        <servlet-class>com.mvc.controller.RegistrationEmailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistrationEmailServlet</servlet-name>
+        <url-pattern>/RegistrationEmailServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>forgotPassServlet</servlet-name>
+        <servlet-class>com.mvc.controller.forgotPassServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>forgotPassServlet</servlet-name>
+        <url-pattern>/forgotPassServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>recoverPassEmailServlet</servlet-name>
+        <servlet-class>com.mvc.controller.recoverPassEmailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>recoverPassEmailServlet</servlet-name>
+        <url-pattern>/recoverPassEmailServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

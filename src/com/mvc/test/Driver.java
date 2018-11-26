@@ -5,6 +5,7 @@ import com.mvc.controller.RegisteredUser;
 public class Driver {
 
     public static void main(String[] args) {
+        /*
         RegisteredUser user = new RegisteredUser("johndoe@gmail.com", "pass", "John", "Doe", "Nowhere 3546 Street", "1234567890", 0);
 
         user.addRegUserToDB();
@@ -40,5 +41,6 @@ public class Driver {
         System.out.println(test.toString());
 
         test.deleteRegisterdUserTable();
+        */
     }
 }

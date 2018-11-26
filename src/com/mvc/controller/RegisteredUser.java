@@ -6,7 +6,6 @@ import java.lang.String;
 public class RegisteredUser {
 
     private static final String TEST = "jdbc:mysql://127.0.01:3306/e-booking?user=root&password=password";//change this to appropriate url/user/pass
-    String registrationStatus = null;
     //Reference from MYSQL
     /* 1 uid: int
      * 2 Email: string
@@ -29,6 +28,9 @@ public class RegisteredUser {
     private String PHONE;
     private String PAYMENT; //fix this later, should be credit card information, should switch to table I think or class
     private int PROMO;//change this to boolean?
+    private int USERTYPE;
+    private int STATUS;
+    public String registrationStatus = null;
     //private enum STATUS; //fix this later
 
     //container for stuff related to queries
@@ -55,7 +57,7 @@ public class RegisteredUser {
 
     // Overloaded constructor for com.mvc.controller.RegisteredUser();
     // Initializes variables to values set by user.
-    public RegisteredUser(String email, String pass, String first, String last, String address, String phone, int subscription) {
+    public RegisteredUser(String first, String last,String email, String pass, String phone, String address, int status, int subscription, int userType) {
         this.UID = 0;
         this.EMAIL = email;
         this.PASSWORD = pass;
@@ -65,15 +67,17 @@ public class RegisteredUser {
         this.PHONE = phone;
         this.PAYMENT = null;//Not sure how to implement this
         this.PROMO = subscription;
-        //this.STATUS = ?????;
+        this.STATUS = status;
+        this.USERTYPE = userType;
+
     }
 
     //Retrieve user's data from database using email
-    public void retrieveUsersData(String email) {
+    public String retrieveUsersData(String email) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(TEST);
-            String query = "SELECT userID, password, firstName, lastName, phone, promoSub FROM Users WHERE email = ? ";
+            String query = "SELECT userID, firstName, lastName, password, phone, address, status, promoSub, userType FROM Users WHERE email = ? ";
             pstmt = con.prepareStatement(query);
             pstmt.setString(1,  email);
             rs = pstmt.executeQuery();
@@ -84,10 +88,11 @@ public class RegisteredUser {
                 this.PASSWORD = rs.getString("password");
                 this.FNAME = rs.getString("firstName");
                 this.LNAME = rs.getString("lastName");
-                //this.ADDRESS = rs.getString("address");
+                this.ADDRESS = rs.getString("address");
                 this.PHONE = rs.getString("phone");
                 this.PROMO = rs.getInt("promoSub");
             }
+            if(rs != null) return "USER EXISTS";
 
             rs.close();
             pstmt.close();
@@ -109,6 +114,7 @@ public class RegisteredUser {
                 se.printStackTrace();
             }
         }
+        return "USER DOES NOT EXIST";
     }//retrieveUsersData(String email)
 
     //should return false or true if password match
@@ -169,32 +175,33 @@ public class RegisteredUser {
 
 
     //Adds user to database EX: user.addRegUserToDB();
-    public void addRegUserToDB() {
+    public String addRegUserToDB() {
         String registrationStatus = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(TEST);//change later to different URL if needed
-            String query = "INSERT into users('email', 'password', `firstName`, `lastName`, 'address', 'phonenumber', `promoSub`) values(?, ?, ?, ?, ?, ?, ?)";
+            String query = "INSERT into users(userID, firstName, lastName, email, password, phone, address, status, promoSub, userType) values(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             pstmt = con.prepareStatement(query);
 
-            pstmt.setString(1,  this.EMAIL);
-            pstmt.setString(2,  this.PASSWORD);
-            pstmt.setString(3,  this.FNAME);
-            pstmt.setString(4,  this.LNAME);
-            pstmt.setString(5,  this.ADDRESS);
-            pstmt.setString(6,  this.PHONE);
-            pstmt.setInt(7, this.PROMO);
-
+            pstmt.setString(1,  this.FNAME);
+            pstmt.setString(2,  this.LNAME);
+            pstmt.setString(3,  this.EMAIL);
+            pstmt.setString(4,  this.PASSWORD);
+            pstmt.setString(5,  this.PHONE);
+            pstmt.setString(6,  this.ADDRESS);
+            pstmt.setInt(7,this.STATUS);
+            pstmt.setInt(8, this.PROMO);
+            pstmt.setInt(9,  this.USERTYPE);
 
             int i= pstmt.executeUpdate();
 
             //test if executeUpdate == 1
-            if (i!=0) registrationStatus = "SUCCESS";
+            if (i!=0) return "SUCCESS";
 
             pstmt.close();
             con.close();
             //Just to ensure data has been inserted into the database
-            //System.out.println("ADDED to DB successfully");
+
         }catch(SQLException se) {
             se.printStackTrace();
         }catch(Exception e) {
@@ -212,6 +219,7 @@ public class RegisteredUser {
                 se.printStackTrace();
             }
         }
+        return "Something went wrong!";
     }//addRegUserToDB
 
     //Deletes user from database EX: user.deleteRegUserFromDB();

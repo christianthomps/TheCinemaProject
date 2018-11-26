@@ -6,11 +6,13 @@
     <title>Cinema</title>
 </head>
 
+
 <body>
 <!-Link map for header-->
 <map name="header-links">
     <area target="" alt="browse" title="browse" href="Browse.html" coords="227,204,347,237" shape="rect">
-    <area target="" alt="account" title="account" href="signin.jsp" coords="353,203,473,237" shape="rect">
+    <area target="" alt="account" title="account"
+          href=""  coords="353,203,473,237" shape="rect">
     <area target="" alt="home" title="home" href="index.jsp" coords="154,79,532,168" shape="rect">
 </map>
     <div id="wrapper">

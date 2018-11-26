@@ -29,7 +29,7 @@ public class smtp {
     public static void main(String[] args) throws MessagingException {
 
         Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.[server].com");                                                        //insert name of host/mail server here, format: "smtp.[server].com" (i.e. smtp.gmail.com)
+        props.put("mail.smtp.host", "smtp.gmail.com");                                                        //insert name of host/mail server here, format: "smtp.[server].com" (i.e. smtp.gmail.com)
         props.put("mail.smtp.auth", "true");                                                                    //attempts to authenticate user using the AUTH command
         props.put("mail.smtp.port", "[portNumber]");                                                            //insert port number of the mail server for the protocol. (i.e. 587 for TLS, 465 for SSL)
         props.put("mail.smtp.starttls.enable", "true");                                                        //allows the use of TLS for SMTP connections

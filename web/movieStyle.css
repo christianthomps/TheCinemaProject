@@ -1,11 +1,11 @@
-#list{
-
+.row{
+ display: flex;
 }
 
-.item{
-
+.item {
+    flex: 33.33%;
     height: 220px;
-    width: auto;
+    width: 160px;
     padding-top: 1em;
     padding-bottom: 1em;
     border-style: solid;
@@ -17,13 +17,16 @@
     margin-left: 1em;
     height: 209px;
     width: 140px;
-    float: left;
+
     border-style: solid;
     border-width: 1px;
     border-color: yellow;
 }
 .movieTitleLink{
-    float: top;
+    margin-left: 1em;
+    float: bottom;
+    width: 140px;
+    height: 20px;
     text-align: center;
     border-style: solid;
     border-width: 1px;

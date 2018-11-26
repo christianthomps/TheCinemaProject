@@ -5,6 +5,7 @@ import com.mvc.controller.RegisteredUser;
 public class Testdriver {
 
     public static void main(String[] args) {
+        /*
         RegisteredUser user = new RegisteredUser("johndoe@gmail.com", "pass", "John", "Doe", "Nowhere 3546 Street", "123456789", 0);
 
         user.addRegUserToDB();
@@ -33,7 +34,7 @@ public class Testdriver {
         test.retrieveUsersData("fsusucks@gmail.com");
         test.deleteRegUserFromDB();
 
-        user = new RegisteredUser("IRULE@gmail.com", "pass", "Mister", "Nobody", "HURT ME", "12334545", 0);
+        //user = new RegisteredUser("IRULE@gmail.com", "pass", "Mister", "Nobody", "HURT ME", "12334545", 0);
         user.addRegUserToDB();
 
         test.retrieveUsersData("IRULE@gmail.com");
@@ -45,5 +46,6 @@ public class Testdriver {
 
         //clear db for next test
         test.deleteRegisterdUserTable();
+        */
     }
 }

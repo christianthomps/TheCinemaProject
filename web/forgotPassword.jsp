@@ -21,29 +21,18 @@
     <div class="content">
         <div class="content-text">
             <div class="contentBox">
-                <form name="login" action="SigninServlet" method="post">
-                    <p>Sign up and book movie tickets now!</p>
-                    <p>
-                        Email: <input type="text" placeholder="Enter Email" name="email" required>
-                    </p>
-                    <p>
-                        Password: <input type="password" placeholder="Enter Password" name="password" required>
-                    </p>
-                    <p>
-                        <button type="submit" value="login">Sign In</button>
-                    </p>
-                    <p>
-                        Don't have an account? <a href="registration.jsp">Make one now!</a>
-                    </p>
-                    <p>
-                        Forgot your password? <a href="forgotPassword.jsp">Click here.</a>
-                    </p>
+                <h2>Lost Password</h2>
+                <form id="forgotPassword" action="forgotPassServlet" method="post">
+                    <br>
+                    <input type="text" placeholder="Enter email address" name="email">
+                <p><button type="submit">Recover Password</button></p>
+
                 </form>
             </div>
         </div>
+
+
     </div>
-
-
 </div>
 
 </body>
