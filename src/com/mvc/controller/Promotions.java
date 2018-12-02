@@ -1,3 +1,10 @@
+/**
+ * PATCH NOTES:
+ * September 20 2018: Skeleton code created
+ * October 6 2018: Created working code - untested
+ * October 16 2018: Tested code, patched bugged code
+ * November 29 2018: Added JavaDoc comments
+ */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,15 +18,19 @@ public class Promotions {
 	private String PROMOCODE;
 	private double DISCOUNT;
 	private String EXPIREDATE;//should this be date type???
-
-	private static final String TEST = "jdbc:mysql://127.0.0.1:3306/e-booking?user=root&password=June201998";
-	
+	//specific for maddies comp
+	//private static final String TEST = "jdbc:mysql://127.0.0.1:3306/e-booking?user=root&password=June201998";
+	private static final String TEST = "jdbc:mysql://127.0.01:3306/e-booking?user=root&password=password";
+		
 	//container for stuff related to queries
 	static Statement stmt = null;
 	static ResultSet rs = null;
 	static Connection con = null;
 	static PreparedStatement pstmt = null;
 
+	/**
+	 * Default constructor - primarily used for retrieval of data using getters/setters
+	 */
 	public Promotions() {
 		this.PROMOID = 0;//should be invalid
 		this.PROMOCODE = null;
@@ -27,6 +38,12 @@ public class Promotions {
 		this.EXPIREDATE = null;
 	}
 	
+	/**
+	 * Overloaded constructor - Used to create new promotions using parameters
+	 * @param code Name of promotion
+	 * @param discount Amount of discount
+	 * @param expiration Expiration date of promotion
+	 */
 	public Promotions(String code, double discount, String expiration) {
 		this.PROMOCODE = code;
 		this.DISCOUNT = discount;
@@ -61,6 +78,10 @@ public class Promotions {
 		this.EXPIREDATE = expiration;
 	}
 	
+	/**
+	 * Retrieves all relevant data related to promotion into its default variables from database
+	 * @param code Name of promotion to retrieve data of
+	 */
 	public void retrievePromoInfo(String code) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -99,6 +120,10 @@ public class Promotions {
 		}
 	}
 
+	/**
+	 * Adds promotion to Promotions database
+	 */
+
 	public void addPromotionToDB() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -135,6 +160,10 @@ public class Promotions {
 		}
 	}
 
+	/**
+	 * Deletes promotion from Promotions database
+	 * EX: promo.deletePromotionFromDB();
+	 */
 	public void deletePromotionFromDB() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -169,6 +198,9 @@ public class Promotions {
 
 	}
 	
+	/**
+	 * Resets Promotion attributes
+	 */
 	public void reset() {
 		this.PROMOID = 0;
 		this.PROMOCODE = null;
@@ -176,6 +208,9 @@ public class Promotions {
 		this.EXPIREDATE = null;
 	}
 
+	/**
+	 * Completely clears Promotions database of all data (UNRECOVERABLE once used)
+	 */
 	public void deletePromotionsTable() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -212,7 +247,7 @@ public class Promotions {
 			}
 		}
 	}
-
+	
 	@Override
 	public String toString(){
 		return "Current Promotion data:\n"
